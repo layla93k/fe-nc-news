@@ -1,32 +1,18 @@
 import React from "react";
 import NavBar from "./NavBar";
-import axios from "axios";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { getArticles } from "../Api";
 
 export default function ArticleList({ articleList, setArticleList }) {
-  const getArticles = () => {
-    let path = "https://nc-news-back-end-project.onrender.com/api/articles";
-
-    return axios
-      .get(path)
-      .then((response) => {
-        return response.data;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   useEffect(() => {
     getArticles().then((response) => {
-      console.log(response);
       setArticleList(response.articles);
     });
   }, []);
 
   return (
-    <div className="main">
+    <main>
       <NavBar />
       <ul className="articles">
         {articleList.map((article) => {
@@ -43,6 +29,6 @@ export default function ArticleList({ articleList, setArticleList }) {
           );
         })}
       </ul>
-    </div>
+    </main>
   );
 }

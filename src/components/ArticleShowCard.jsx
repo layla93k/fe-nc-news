@@ -1,25 +1,15 @@
 import React from "react";
 import { useEffect } from "react";
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import NavBar from "./NavBar";
+import CommentCard from "./CommentCard";
+import { getArticleById } from "../Api";
 
 export default function ArticleShowCard({ articleList, setArticleList }) {
   const { article_id } = useParams();
 
-  const getArticleById = () => {
-    let path = `https://nc-news-back-end-project.onrender.com/api/articles/${article_id}`;
-    return axios
-      .get(path)
-      .then((response) => {
-        return response.data;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
   useEffect(() => {
-    getArticleById().then((response) => {
+    getArticleById(article_id).then((response) => {
       setArticleList(response.article[0]);
     });
   }, []);
@@ -37,6 +27,8 @@ export default function ArticleShowCard({ articleList, setArticleList }) {
         <h5>Comments: {articleList.comment_count}</h5>
         <h5>Votes: {articleList.votes}</h5>
       </div>
+
+      <CommentCard />
     </>
   );
 }
