@@ -27,15 +27,15 @@ export default function ArticleList({ articleList, setArticleList }) {
   return (
     <div className="main">
       <NavBar />
-      <ul className="article">
+      <ul className="articles">
         {articleList.map((article) => {
           return (
-            <li key={article.article_id}>
-              <h3>{article.title}</h3>
-              <h4>{article.author}</h4>
-              <h5>{article.topic}</h5>
+            <li className="article" key={article.article_id}>
+              <h2 className="title">{article.title}</h2>
               <img src={article.article_img_url} />
-              <p>{article.body}</p>
+              <h4>{article.author}</h4>
+              <h5 className="topic">{article.topic}</h5>
+              <p className="votes">Votes</p>
             </li>
           );
         })}
