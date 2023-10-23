@@ -4,6 +4,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Welcome from "./components/Welcome";
 import ArticleList from "./components/ArticleList";
+import ArticleShowCard from "./components/ArticleShowCard";
 
 function App() {
   const [articleList, setArticleList] = useState([]);
@@ -13,11 +14,28 @@ function App() {
       <Header />
 
       <Routes>
-        <Route path="/" element={<Welcome />} />
+        <Route
+          path="/"
+          element={
+            <ArticleList
+              articleList={articleList}
+              setArticleList={setArticleList}
+            />
+          }
+        />
         <Route
           path="/articles"
           element={
             <ArticleList
+              articleList={articleList}
+              setArticleList={setArticleList}
+            />
+          }
+        />
+        <Route
+          path="/articles/:article_id"
+          element={
+            <ArticleShowCard
               articleList={articleList}
               setArticleList={setArticleList}
             />
