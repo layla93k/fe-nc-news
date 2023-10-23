@@ -79,8 +79,21 @@ img {
 }
 
 .container {
-  padding-top: 200px;
   text-align: center;
   border-style: solid;
   border-color: black;
+  margin: 150px;
+  flex-wrap: wrap;
+}
+
+.comments {
+  flex-wrap: wrap;
+  margin-top: 50px;
+  list-style-type: none;
+  text-align: center;
+}
+
+.comment {
+  margin: 100px;
+  border-style: solid;
 }

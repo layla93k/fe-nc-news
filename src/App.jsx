@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Route, Routes, Link } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
-import Welcome from "./components/Welcome";
+// import Welcome from "./components/Welcome";
 import ArticleList from "./components/ArticleList";
 import ArticleShowCard from "./components/ArticleShowCard";
 
