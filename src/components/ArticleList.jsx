@@ -1,10 +1,11 @@
 import React from "react";
 import NavBar from "./NavBar";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getArticles } from "../Api";
 
-export default function ArticleList({ articleList, setArticleList }) {
+export default function ArticleList() {
+  const [articleList, setArticleList] = useState([]);
   useEffect(() => {
     getArticles().then((response) => {
       setArticleList(response.articles);
