@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "./NavBar";
 import axios from "axios";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function ArticleList({ articleList, setArticleList }) {
   const getArticles = () => {
@@ -30,13 +31,15 @@ export default function ArticleList({ articleList, setArticleList }) {
       <ul className="articles">
         {articleList.map((article) => {
           return (
-            <li className="article" key={article.article_id}>
-              <h2 className="title">{article.title}</h2>
-              <img src={article.article_img_url} />
-              <h4>{article.author}</h4>
-              <h5 className="topic">{article.topic}</h5>
-              <p className="votes">Votes</p>
-            </li>
+            <Link to={`/articles/${article.article_id}`}>
+              <li className="article" key={article.article_id}>
+                <h2 className="title">{article.title}</h2>
+                <img src={article.article_img_url} />
+                <h4>{article.author}</h4>
+                <h5 className="topic">{article.topic}</h5>
+                <p className="votes">Votes</p>
+              </li>
+            </Link>
           );
         })}
       </ul>
