@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
@@ -16,6 +15,7 @@ function App() {
         <Route path="/" element={<ArticleList />} />
         <Route path="/articles" element={<ArticleList />} />
         <Route path="/articles/:article_id" element={<ArticleShowCard />} />
+        <Route path="/articles/:topic" element={<ArticleList />} />
       </Routes>
     </div>
   );

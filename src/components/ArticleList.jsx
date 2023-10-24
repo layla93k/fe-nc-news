@@ -3,19 +3,24 @@ import NavBar from "./NavBar";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getArticles } from "../Api";
+import { useParams } from "react-router-dom";
+import FilterBy from "./FilterBy";
 
 export default function ArticleList() {
   const [articleList, setArticleList] = useState([]);
+  const { topic } = useParams();
+  console.log(topic);
 
   useEffect(() => {
-    getArticles().then((response) => {
+    getArticles(topic).then((response) => {
       setArticleList(response.articles);
     });
-  }, []);
+  }, [topic]);
 
   return (
     <main>
       <NavBar />
+      <FilterBy />
       <ul className="articles">
         {articleList.map((article) => {
           return (

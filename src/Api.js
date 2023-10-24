@@ -1,7 +1,11 @@
 import axios from "axios";
 
-export const getArticles = () => {
+export const getArticles = (topic) => {
   let path = "https://nc-news-back-end-project.onrender.com/api/articles";
+
+  if (topic) {
+    path += `?topic=${topic}`;
+  }
 
   return axios
     .get(path)
