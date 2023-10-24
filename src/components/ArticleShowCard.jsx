@@ -1,16 +1,18 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import NavBar from "./NavBar";
 import CommentCard from "./CommentCard";
 import { getArticleById } from "../Api";
+import ArticleVotes from "./ArticleVotes";
 
-export default function ArticleShowCard({ articleList, setArticleList }) {
+export default function ArticleShowCard() {
   const { article_id } = useParams();
+  const [singleArticle, setSingleArticle] = useState([]);
 
   useEffect(() => {
     getArticleById(article_id).then((response) => {
-      setArticleList(response.article[0]);
+      setSingleArticle(response.article[0]);
     });
   }, []);
 
@@ -19,13 +21,15 @@ export default function ArticleShowCard({ articleList, setArticleList }) {
       <NavBar />
 
       <div className="container">
-        <h2>{articleList.title}</h2>
-        <img src={articleList.article_img_url} />
-        <h4>{articleList.author}</h4>
-        <h4>{articleList.topic}</h4>
-        <p>{articleList.body}</p>
-        <h5>Comments: {articleList.comment_count}</h5>
-        <h5>Votes: {articleList.votes}</h5>
+        <h2>{singleArticle.title}</h2>
+        <img src={singleArticle.article_img_url} />
+        <h4>{singleArticle.author}</h4>
+        <h4>{singleArticle.topic}</h4>
+        <p>{singleArticle.body}</p>
+        <h5>Comments: {singleArticle.comment_count}</h5>
+        <h5>
+          <ArticleVotes article_id={article_id} />
+        </h5>
       </div>
 
       <CommentCard />

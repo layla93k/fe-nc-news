@@ -73,7 +73,7 @@ img {
 }
 
 .votes {
-  font-size: 20px;
+  font-size: 30px;
   width: fit-content;
   margin-left: 50px;
 }
@@ -96,4 +96,32 @@ img {
 .comment {
   margin: 100px;
   border-style: solid;
+}
+
+.votes {
+  flex-wrap: wrap;
+  margin-right: 500px;
+}
+
+.numVotes {
+  margin: 0px;
+  margin-left: 30px;
+  font-size: 30px;
+  padding-top: 35px;
+}
+
+.flex-div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.heart-btn {
+  height: 10px;
+  width: 10px;
+}
+
+.dislike-btn {
+  font-size: 30px;
+  font-weight: bold;
 }
