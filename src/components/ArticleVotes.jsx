@@ -63,7 +63,7 @@ export default function ArticleVotes({ article_id }) {
           }}
         />
       </button>
-      {err && <p>"Votes not updated!"</p>}
+      {err && <p>Votes not updated!</p>}
     </div>
   );
 }

@@ -48,3 +48,15 @@ export const updateLikes = (votes, article_id) => {
       return err;
     });
 };
+
+export const postComment = (comment, article_id) => {
+  let path = `https://nc-news-back-end-project.onrender.com/api/articles/${article_id}/comments`;
+  return axios
+    .post(path, comment)
+    .then((response) => {
+      return response;
+    })
+    .catch((err) => {
+      return err;
+    });
+};
