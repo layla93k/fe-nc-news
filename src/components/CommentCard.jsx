@@ -3,9 +3,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getComments } from "../Api";
 
-export default function CommentCard() {
+export default function CommentCard({ comments, setComments }) {
   const { article_id } = useParams();
-  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     getComments(article_id).then((response) => {

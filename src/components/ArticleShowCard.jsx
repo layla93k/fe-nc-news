@@ -5,10 +5,12 @@ import NavBar from "./NavBar";
 import CommentCard from "./CommentCard";
 import { getArticleById } from "../Api";
 import ArticleVotes from "./ArticleVotes";
+import CommentAdder from "./CommentAdder";
 
 export default function ArticleShowCard() {
   const { article_id } = useParams();
   const [singleArticle, setSingleArticle] = useState([]);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     getArticleById(article_id).then((response) => {
@@ -31,8 +33,12 @@ export default function ArticleShowCard() {
           <ArticleVotes article_id={article_id} />
         </h5>
       </div>
-
-      <CommentCard />
+      <CommentAdder
+        comments={comments}
+        setComments={setComments}
+        article_id={article_id}
+      />
+      <CommentCard comments={comments} setComments={setComments} />
     </>
   );
 }
