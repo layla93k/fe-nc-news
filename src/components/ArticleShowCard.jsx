@@ -30,7 +30,10 @@ export default function ArticleShowCard() {
         <p>{singleArticle.body}</p>
         <h5>Comments: {singleArticle.comment_count}</h5>
         <h5>
-          <ArticleVotes article_id={article_id} />
+          <ArticleVotes
+            totalVotes={singleArticle.votes}
+            article_id={article_id}
+          />
         </h5>
       </div>
       <CommentAdder
