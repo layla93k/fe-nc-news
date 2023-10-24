@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useParams } from "react-router-dom";
 
 export const getArticles = () => {
   let path = "https://nc-news-back-end-project.onrender.com/api/articles";
@@ -10,7 +9,7 @@ export const getArticles = () => {
       return response.data;
     })
     .catch((err) => {
-      console.log(err);
+      return err;
     });
 };
 
@@ -22,7 +21,7 @@ export const getArticleById = (article_id) => {
       return response.data;
     })
     .catch((err) => {
-      console.log(err);
+      return err;
     });
 };
 
@@ -34,6 +33,18 @@ export const getComments = (article_id) => {
       return response.data;
     })
     .catch((err) => {
-      console.log(err);
+      return err;
+    });
+};
+
+export const updateLikes = (votes, article_id) => {
+  let path = `https://nc-news-back-end-project.onrender.com/api/articles/${article_id}`;
+  return axios
+    .patch(path, votes)
+    .then((response) => {
+      return response;
+    })
+    .catch((err) => {
+      return err;
     });
 };

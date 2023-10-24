@@ -9,7 +9,6 @@ import ArticleVotes from "./ArticleVotes";
 export default function ArticleShowCard() {
   const { article_id } = useParams();
   const [singleArticle, setSingleArticle] = useState([]);
-  const [votes, setVotes] = useState(0);
 
   useEffect(() => {
     getArticleById(article_id).then((response) => {
@@ -29,7 +28,7 @@ export default function ArticleShowCard() {
         <p>{singleArticle.body}</p>
         <h5>Comments: {singleArticle.comment_count}</h5>
         <h5>
-          <ArticleVotes votes={votes} setVotes={setVotes} />
+          <ArticleVotes article_id={article_id} />
         </h5>
       </div>
 
