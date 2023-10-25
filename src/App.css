@@ -48,7 +48,7 @@ img {
 
 .articles {
   flex-wrap: wrap;
-  margin-top: 300px;
+  margin-top: 40px;
   list-style-type: none;
   text-align: center;
 }

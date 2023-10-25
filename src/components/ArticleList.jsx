@@ -8,8 +8,8 @@ import FilterBy from "./FilterBy";
 
 export default function ArticleList() {
   const [articleList, setArticleList] = useState([]);
+
   const { topic } = useParams();
-  console.log(topic);
 
   useEffect(() => {
     getArticles(topic).then((response) => {

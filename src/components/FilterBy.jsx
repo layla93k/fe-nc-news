@@ -7,9 +7,9 @@ export default function FilterBy() {
       <div className="dropdown">
         <button className="dropbtn">Topics</button>
         <div className="dropdown-content">
-          <Link to="/articles/football"> Football </Link>
-          <Link to="/articles/coding"> Coding </Link>
-          <Link to="/articles/cooking"> Cooking </Link>
+          <Link to="/articles/topics/football"> Football </Link>
+          <Link to="/articles/topics/coding"> Coding </Link>
+          <Link to="/articles/topics/cooking"> Cooking </Link>
         </div>
       </div>
     </div>

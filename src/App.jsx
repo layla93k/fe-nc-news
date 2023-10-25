@@ -13,9 +13,9 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<ArticleList />} />
-        <Route path="/articles" element={<ArticleList />} />
         <Route path="/articles/:article_id" element={<ArticleShowCard />} />
-        <Route path="/articles/:topic" element={<ArticleList />} />
+        <Route path="/articles/topics/:topic" element={<ArticleList />} />
+        <Route path="/articles" element={<ArticleList />} />
       </Routes>
     </div>
   );
