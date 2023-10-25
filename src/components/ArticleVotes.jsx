@@ -3,7 +3,7 @@ import Heart from "react-animated-heart";
 import { useState } from "react";
 import { updateLikes } from "../Api";
 
-export default function ArticleVotes({ article_id }) {
+export default function ArticleVotes({ totalVotes, article_id }) {
   const [isClick, setClick] = useState(false);
   const [userLikeInput, setUserLikeInput] = useState(0);
   const [userDislikeInput, setUserDislikeInput] = useState(0);
@@ -52,7 +52,7 @@ export default function ArticleVotes({ article_id }) {
         -
       </button>
 
-      <h5 className="numVotes">{votes}</h5>
+      <h5 className="numVotes">{totalVotes + votes}</h5>
 
       <button disabled={userLikeInput === 1}>
         <Heart
@@ -63,7 +63,7 @@ export default function ArticleVotes({ article_id }) {
           }}
         />
       </button>
-      {err && <p>Votes not updated!</p>}
+      {err ? <p>Votes not updated!</p> : null}
     </div>
   );
 }
