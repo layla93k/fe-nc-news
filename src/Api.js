@@ -16,11 +16,12 @@ export const getArticles = (topic) => {
     });
 };
 
-export const getSortedArticles = (sort) => {
+export const getSortedArticles = (sort, orderby = "desc") => {
   let path = "https://nc-news-back-end-project.onrender.com/api/articles";
 
   if (sort) {
-    path += `?sortby=${sort}&orderby=asc`;
+    console.log("here");
+    path += `?sortby=${sort}&orderby=${orderby}`;
   }
   return axios
     .get(path)

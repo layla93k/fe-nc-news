@@ -1,16 +1,12 @@
 import React from "react";
 
-export default function SortBy({ sort, setSort, setSortSelected }) {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setSortSelected(true);
-  };
+export default function SortBy({ sort, setSort }) {
   const handleChange = (event) => {
     setSort(event.target.value);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <div className="dropdown-sortby">
         <label>
           {" "}
@@ -24,7 +20,6 @@ export default function SortBy({ sort, setSort, setSortSelected }) {
             <option value="votes">Votes</option>
           </select>
         </label>
-        <button className="dropbtn-sortby">Sort!</button>
       </div>
     </form>
   );

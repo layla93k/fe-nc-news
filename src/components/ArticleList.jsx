@@ -7,12 +7,13 @@ import { useParams } from "react-router-dom";
 import FilterBy from "./FilterBy";
 import { getSortedArticles } from "../Api";
 import SortBy from "./SortBy";
+import Orderby from "./Orderby";
 
 export default function ArticleList() {
   const [articleList, setArticleList] = useState([]);
   const [sort, setSort] = useState("");
-  const [sortSelected, setSortSelected] = useState(false);
-  // const [order, setOrder] = useState("desc");
+
+  const [order, setOrder] = useState("desc");
 
   const { topic } = useParams();
 
@@ -23,17 +24,17 @@ export default function ArticleList() {
   }, [topic]);
 
   useEffect(() => {
-    getSortedArticles(sort).then((response) => {
+    getSortedArticles(sort, order).then((response) => {
       setArticleList(response.articles);
     });
-  }, [sortSelected]);
+  }, [sort, order]);
 
   return (
     <main>
       <NavBar />
       <FilterBy />
-      <SortBy sort={sort} setSort={setSort} setSortSelected={setSortSelected} />
-
+      <SortBy sort={sort} setSort={setSort} />
+      <Orderby order={order} setOrder={setOrder} />
       <ul className="articles">
         {articleList.map((article) => {
           return (
