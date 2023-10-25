@@ -10,7 +10,7 @@ export default function CommentCard({ comments, setComments }) {
     getComments(article_id).then((response) => {
       setComments(response.comments);
     });
-  }, []);
+  }, [comments]);
 
   return (
     <main>

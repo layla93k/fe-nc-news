@@ -2,22 +2,26 @@ import React from "react";
 import { useState } from "react";
 import { postComment } from "../Api";
 
-export default function CommentAdder({ comments, setComments, article_id }) {
+export default function CommentAdder({ setComments, article_id }) {
   const [newComment, setNewComment] = useState({
     username: "tickle122",
     body: "",
   });
-
+  const [commentAdded, setCommentAdded] = useState(false);
   const [error, setError] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setNewComment({
+      username: "tickle122",
+      body: "",
+    });
     postComment(newComment, article_id)
       .then((res) => {
+        setCommentAdded(true);
         setComments((currentComments) => {
           return [res.data.yourNewComment, ...currentComments];
         });
-        return res.data.yourNewComment;
       })
       .catch((err) => {
         setError(true);
@@ -33,12 +37,13 @@ export default function CommentAdder({ comments, setComments, article_id }) {
     <>
       {!error ? (
         <div className="comment-add-section">
+          {commentAdded && <p>Your comment has been successfully posted!</p>}
           <form onSubmit={handleSubmit}>
             <label className="comment-label">
               Your comment:
               <input
                 className="comment-input"
-                value={newComment.comment}
+                value={newComment.body}
                 onChange={handleChange}
                 name="body"
                 placeholder="Please write your comment here..."
@@ -46,7 +51,7 @@ export default function CommentAdder({ comments, setComments, article_id }) {
             </label>
 
             <button
-              disabled={!newComment.body}
+              disabled={!newComment.body || commentAdded}
               className="comment-btn"
               type="submit"
               onClick={() => {}}
