@@ -7,7 +7,7 @@ export default function CommentAdder({ comments, setComments, article_id }) {
     username: "tickle122",
     body: "",
   });
-
+  const [commentAdded, setCommentAdded] = useState(false);
   const [error, setError] = useState(false);
 
   const handleSubmit = (event) => {
