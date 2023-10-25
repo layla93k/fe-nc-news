@@ -5,9 +5,15 @@ import { Link } from "react-router-dom";
 import { getArticles } from "../Api";
 import { useParams } from "react-router-dom";
 import FilterBy from "./FilterBy";
+import { getSortedArticles } from "../Api";
+import SortBy from "./SortBy";
+import Orderby from "./Orderby";
 
 export default function ArticleList() {
   const [articleList, setArticleList] = useState([]);
+  const [sort, setSort] = useState("");
+
+  const [order, setOrder] = useState("desc");
 
   const { topic } = useParams();
 
@@ -17,10 +23,18 @@ export default function ArticleList() {
     });
   }, [topic]);
 
+  useEffect(() => {
+    getSortedArticles(sort, order).then((response) => {
+      setArticleList(response.articles);
+    });
+  }, [sort, order]);
+
   return (
     <main>
       <NavBar />
       <FilterBy />
+      <SortBy sort={sort} setSort={setSort} />
+      <Orderby order={order} setOrder={setOrder} />
       <ul className="articles">
         {articleList.map((article) => {
           return (

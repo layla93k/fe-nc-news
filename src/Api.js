@@ -6,7 +6,23 @@ export const getArticles = (topic) => {
   if (topic) {
     path += `?topic=${topic}`;
   }
+  return axios
+    .get(path)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+};
 
+export const getSortedArticles = (sort, orderby = "desc") => {
+  let path = "https://nc-news-back-end-project.onrender.com/api/articles";
+
+  if (sort) {
+    console.log("here");
+    path += `?sortby=${sort}&orderby=${orderby}`;
+  }
   return axios
     .get(path)
     .then((response) => {
