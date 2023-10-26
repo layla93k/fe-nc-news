@@ -6,23 +6,31 @@ import CommentCard from "./CommentCard";
 import { getArticleById } from "../Api";
 import ArticleVotes from "./ArticleVotes";
 import CommentAdder from "./CommentAdder";
+import ErrorComponent from "./ErrorComponent";
 
 export default function ArticleShowCard() {
   const { article_id } = useParams();
   const [singleArticle, setSingleArticle] = useState([]);
   const [comments, setComments] = useState([]);
   const [deleteMsg, setDeleteMsg] = useState("");
+  const [err, setErr] = useState(false);
 
   useEffect(() => {
-    getArticleById(article_id).then((response) => {
-      setSingleArticle(response.article[0]);
-    });
+    getArticleById(article_id)
+      .then((response) => {
+        setErr(false);
+        setSingleArticle(response.article[0]);
+      })
+      .catch((err) => {
+        setErr(true);
+      });
   }, []);
 
-  return (
+  return err ? (
+    <ErrorComponent setErr={setErr} />
+  ) : (
     <>
       <NavBar />
-
       <div className="container">
         <h2>{singleArticle.title}</h2>
         <img src={singleArticle.article_img_url} />

@@ -2,7 +2,6 @@ import axios from "axios";
 
 export const getArticles = (topic) => {
   let path = "https://nc-news-back-end-project.onrender.com/api/articles";
-
   if (topic) {
     path += `?topic=${topic}`;
   }
@@ -12,6 +11,7 @@ export const getArticles = (topic) => {
       return response.data;
     })
     .catch((err) => {
+      console.log("returning err");
       return err;
     });
 };
@@ -20,7 +20,6 @@ export const getSortedArticles = (sort, orderby) => {
   let path = "https://nc-news-back-end-project.onrender.com/api/articles";
 
   if (sort) {
-    console.log(orderby);
     path += `?sortby=${sort}&orderby=${orderby}`;
   }
   return axios
@@ -35,14 +34,9 @@ export const getSortedArticles = (sort, orderby) => {
 
 export const getArticleById = (article_id) => {
   let path = `https://nc-news-back-end-project.onrender.com/api/articles/${article_id}`;
-  return axios
-    .get(path)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((err) => {
-      return err;
-    });
+  return axios.get(path).then((response) => {
+    return response.data;
+  });
 };
 
 export const getComments = (article_id) => {

@@ -8,28 +8,45 @@ import FilterBy from "./FilterBy";
 import { getSortedArticles } from "../Api";
 import SortBy from "./SortBy";
 import Orderby from "./Orderby";
+import ErrorComponent from "./ErrorComponent";
 
-export default function ArticleList() {
+export default function ArticleList({ error, setError }) {
   const [articleList, setArticleList] = useState([]);
   const [sort, setSort] = useState("");
-
   const [order, setOrder] = useState("desc");
 
   const { topic } = useParams();
 
   useEffect(() => {
-    getArticles(topic).then((response) => {
-      setArticleList(response.articles);
-    });
+    getArticles(topic)
+      .then((response) => {
+        if (response.code === "ERR_BAD_REQUEST") {
+          console.log("ive caught the error");
+          setError(true);
+        } else {
+          setArticleList(response.articles);
+          console.log(response, "response");
+        }
+      })
+      .catch((err) => {
+        setError(true);
+      });
   }, [topic]);
 
   useEffect(() => {
-    getSortedArticles(sort, order).then((response) => {
-      setArticleList(response.articles);
-    });
+    getSortedArticles(sort, order)
+      .then((response) => {
+        setArticleList(response.articles);
+      })
+      .catch((err) => {
+        console.log("in the sort catch");
+        setError(true);
+      });
   }, [sort, order]);
 
-  return (
+  return error ? (
+    <ErrorComponent setError={setError} />
+  ) : (
     <main>
       <NavBar />
       <FilterBy />
