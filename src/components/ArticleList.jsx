@@ -38,13 +38,19 @@ export default function ArticleList() {
       <ul className="articles">
         {articleList.map((article) => {
           return (
-            <Link to={`/articles/${article.article_id}`}>
-              <li className="article" key={article.article_id}>
+            <Link
+              key={article.article_id}
+              to={`/articles/${article.article_id}`}
+            >
+              <li className="article">
                 <h2 className="title">{article.title}</h2>
-                <img src={article.article_img_url} />
                 <h4>{article.author}</h4>
+                <p>{article.created_at.slice(0, 10)}</p>
+                <img src={article.article_img_url} />
                 <h5 className="topic">{article.topic}</h5>
                 <p className="votes"> ❤️ {article.votes}</p>
+
+                <p> Comments {article.comment_count}</p>
               </li>
             </Link>
           );

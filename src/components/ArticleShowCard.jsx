@@ -11,6 +11,7 @@ export default function ArticleShowCard() {
   const { article_id } = useParams();
   const [singleArticle, setSingleArticle] = useState([]);
   const [comments, setComments] = useState([]);
+  const [deleteMsg, setDeleteMsg] = useState("");
 
   useEffect(() => {
     getArticleById(article_id).then((response) => {
@@ -41,7 +42,12 @@ export default function ArticleShowCard() {
         setComments={setComments}
         article_id={article_id}
       />
-      <CommentCard comments={comments} setComments={setComments} />
+      <p className="delete-msg">{deleteMsg}</p>
+      <CommentCard
+        comments={comments}
+        setComments={setComments}
+        setDeleteMsg={setDeleteMsg}
+      />
     </>
   );
 }

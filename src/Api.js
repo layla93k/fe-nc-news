@@ -16,11 +16,11 @@ export const getArticles = (topic) => {
     });
 };
 
-export const getSortedArticles = (sort, orderby = "desc") => {
+export const getSortedArticles = (sort, orderby) => {
   let path = "https://nc-news-back-end-project.onrender.com/api/articles";
 
   if (sort) {
-    console.log("here");
+    console.log(orderby);
     path += `?sortby=${sort}&orderby=${orderby}`;
   }
   return axios
@@ -78,5 +78,18 @@ export const postComment = (comment, article_id) => {
     })
     .catch((err) => {
       return err;
+    });
+};
+
+export const deleteComment = (comment_id) => {
+  let path = `https://nc-news-back-end-project.onrender.com/api/comments/${comment_id}`;
+
+  return axios
+    .delete(path)
+    .then((response) => {
+      console.log(response, "deleted");
+    })
+    .catch((err) => {
+      console.log(err, "there is an error");
     });
 };
