@@ -38,8 +38,11 @@ export default function ArticleList() {
       <ul className="articles">
         {articleList.map((article) => {
           return (
-            <Link to={`/articles/${article.article_id}`}>
-              <li className="article" key={article.article_id}>
+            <Link
+              key={article.article_id}
+              to={`/articles/${article.article_id}`}
+            >
+              <li className="article">
                 <h2 className="title">{article.title}</h2>
                 <img src={article.article_img_url} />
                 <h4>{article.author}</h4>

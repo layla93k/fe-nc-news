@@ -266,3 +266,10 @@ img {
 .dropdown-sortby:hover .dropbtn {
   background-color: #3e8e41;
 }
+
+.delete-msg {
+  text-align: center;
+  color: red;
+  font-size: 30px;
+  padding-bottom: 0px;
+}
