@@ -4,18 +4,6 @@
   font-family: "Roboto", sans-serif;
 }
 
-header {
-  flex-wrap: wrap;
-  padding-top: 5px;
-  display: flex;
-  justify-content: center;
-  height: 80px;
-  color: rgb(20, 25, 49);
-  font-size: 32px;
-  background-color: rgb(170, 200, 226);
-  width: 100%;
-}
-
 .logged-in-user {
   flex-wrap: wrap;
   text-align: right;
@@ -30,20 +18,9 @@ header {
   width: 60px;
 }
 
-nav {
-  flex-wrap: wrap;
-  text-align: center;
-  margin-top: 230px;
-  width: 100%;
-  font-size: 27px;
-  position: absolute;
-  top: 20px;
-  right: 0;
-}
-
 img {
-  height: 300px;
-  width: 400px;
+  height: 140px;
+  width: 190px;
 }
 
 .articles {
@@ -54,7 +31,7 @@ img {
 }
 
 .article {
-  background-color: rgb(175, 164, 164);
+  background-color: rgb(224, 219, 219);
   border-radius: 50px;
   line-height: normal;
   color: rgb(59, 59, 105);

@@ -1,0 +1,26 @@
+nav {
+  list-style: none;
+  flex-wrap: wrap;
+  text-align: center;
+  height: 100px;
+  margin-top: 85px;
+  width: 100%;
+  font-size: 27px;
+  position: absolute;
+  top: 100px;
+  right: 0;
+}
+
+.navBar {
+  list-style-type: none;
+  overflow: hidden;
+  background-color: #d7e7e7;
+}
+
+li {
+  float: left;
+}
+
+li a:hover {
+  background-color: #3e3f5e;
+}
