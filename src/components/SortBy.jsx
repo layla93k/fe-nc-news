@@ -6,8 +6,8 @@ export default function SortBy({ sort, setSort }) {
   };
 
   return (
-    <div className="dropdown-sortby">
-      <select value={sort} onChange={handleChange}>
+    <div className="dropdown-container">
+      <select className="custom-select" value={sort} onChange={handleChange}>
         <option disabled={true} value="">
           Sort by..
         </option>

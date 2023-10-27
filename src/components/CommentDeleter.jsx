@@ -1,6 +1,7 @@
 import React from "react";
 import { deleteComment } from "../Api";
 import { useState } from "react";
+import "../comments.css";
 
 export default function CommentDeleter({
   commentId,

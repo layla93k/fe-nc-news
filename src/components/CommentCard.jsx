@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getComments } from "../Api";
 import CommentDeleter from "./CommentDeleter";
+import "../comments.css";
 
 export default function CommentCard({ comments, setComments, setDeleteMsg }) {
   const { article_id } = useParams();
@@ -15,7 +16,7 @@ export default function CommentCard({ comments, setComments, setDeleteMsg }) {
 
   return (
     <main>
-      <ul className="comments">
+      <ul className="comment-container">
         {comments.map((comment) => {
           return (
             <li className="comment" key={comment.comment_id}>

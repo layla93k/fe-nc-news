@@ -6,8 +6,8 @@ export default function Orderby({ order, setOrder }) {
   };
 
   return (
-    <div className="dropdown-orderby">
-      <select value={order} onChange={handleChange}>
+    <div className="dropdown-container">
+      <select className="custom-select" value={order} onChange={handleChange}>
         <option disabled={true} value="">
           Order by...
         </option>

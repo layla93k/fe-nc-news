@@ -6,7 +6,14 @@ import SortBy from "./SortBy";
 import UserIcon from "./UserIcon";
 import FilterBy from "./FilterBy";
 
-export default function NavBar({ sort, setSort, order, setOrder }) {
+export default function NavBar({
+  sort,
+  setSort,
+  order,
+  setOrder,
+  topicName,
+  setTopicName,
+}) {
   return (
     <>
       <nav className="navbar" id="flex-div">
@@ -22,6 +29,9 @@ export default function NavBar({ sort, setSort, order, setOrder }) {
           </li>
           <li>
             <Orderby order={order} setOrder={setOrder} />
+          </li>
+          <li>
+            <FilterBy topicName={topicName} setTopicName={setTopicName} />
           </li>
         </ul>
       </nav>

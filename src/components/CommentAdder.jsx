@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { postComment } from "../Api";
+import "../comments.css";
 
 export default function CommentAdder({ setComments, article_id }) {
   const [newComment, setNewComment] = useState({
@@ -34,10 +35,9 @@ export default function CommentAdder({ setComments, article_id }) {
   };
 
   return (
-    <>
+    <div className="comment-add-container">
       {!error ? (
         <div className="comment-add-section">
-          {commentAdded && <p>Your comment has been successfully posted!</p>}
           <form onSubmit={handleSubmit}>
             <label className="comment-label">
               Your comment:
@@ -58,11 +58,14 @@ export default function CommentAdder({ setComments, article_id }) {
             >
               Add comment
             </button>
+            {commentAdded && (
+              <p id="success-msg">Your comment has been successfully posted!</p>
+            )}
           </form>
         </div>
       ) : (
         <p className="err"> Your comment has not been added</p>
       )}
-    </>
+    </div>
   );
 }

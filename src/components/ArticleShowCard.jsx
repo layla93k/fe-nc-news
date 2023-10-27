@@ -38,18 +38,18 @@ export default function ArticleShowCard({ isLoading, setIsLoading }) {
     <>
       <NavBar />
       <div className="article-container">
-        <h2>{singleArticle.title}</h2>
+        <h2 className="singlearticle-title">{singleArticle.title}</h2>
         <img src={singleArticle.article_img_url} />
         <h4>{singleArticle.author}</h4>
         <h4>{singleArticle.topic}</h4>
         <p>{singleArticle.body}</p>
-        <h5>Comments: {singleArticle.comment_count}</h5>
-        <h5>
-          <ArticleVotes
-            totalVotes={singleArticle.votes}
-            article_id={article_id}
-          />
+        <h5 className="singlearticle-comment-count">
+          💬 {singleArticle.comment_count}
         </h5>
+        <ArticleVotes
+          totalVotes={singleArticle.votes}
+          article_id={article_id}
+        />
       </div>
       <CommentAdder
         comments={comments}

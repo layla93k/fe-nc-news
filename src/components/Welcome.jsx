@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Welcome() {
   return (
-    <div className="flex-div">
+    <div className="welcome-container">
       <p className="welcome">Welcome butter_bridge, please click to log in.</p>
       <Link className="login" to="/articles">
         {" "}

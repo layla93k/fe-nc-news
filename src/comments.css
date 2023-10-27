@@ -1,0 +1,108 @@
+.numVotes {
+  font-size: 30px;
+}
+
+.comment-input {
+  margin-top: 300px;
+  height: 100px;
+  width: 400px;
+}
+
+.comment-btn {
+  margin-top: 35px;
+  background-color: #6b85b6;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.comment-btn {
+  transition-duration: 0.4s;
+}
+
+.comment-btn:hover {
+  background-color: #32323a;
+  color: white;
+}
+
+.input-err {
+  color: red;
+}
+
+#heart-btn {
+  padding-bottom: 20px;
+  height: 10px;
+  width: 10px;
+  z-index: 1;
+}
+
+#dislike-btn {
+  font-size: 30px;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.votes-container {
+  margin-right: 30%;
+  margin-left: 39%;
+  display: flex;
+  justify-content: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+
+.comment-add-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -230px;
+}
+
+.comments {
+  list-style: none;
+  padding: 0;
+}
+
+.comment {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px; /* Set the desired width */
+  margin: 0 auto; /* Center horizontally */
+  padding: 10px; /* Add padding for spacing */
+  box-shadow: 0 4px 4px rgba(0, 0, 2, 1);
+  background-color: #c6c8cf; /* Optional: Set a background color */
+  margin: 20px;
+}
+
+.comment > div {
+  margin-bottom: 10px;
+}
+
+.comment-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 2px;
+}
+
+#success-msg {
+  padding: 0%;
+  margin-left: 25%;
+}
+
+.delete-btn {
+  background-color: #c6c8cf;
+}
+
+.delete-msg {
+  color: red;
+  margin-left: 30%;
+}

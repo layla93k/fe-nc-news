@@ -20,12 +20,12 @@ export default function ArticleList({
   setIsLoading,
 }) {
   const [articleList, setArticleList] = useState([]);
-
   const { topic } = useParams();
+  const [topicName, setTopicName] = useState(topic);
 
   useEffect(() => {
     setIsLoading(true);
-    getArticles(topic)
+    getArticles(topicName)
       .then((response) => {
         setError(false);
         setIsLoading(false);
@@ -35,7 +35,7 @@ export default function ArticleList({
         setError(true);
         setIsLoading(false);
       });
-  }, [topic]);
+  }, [topicName]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -57,10 +57,16 @@ export default function ArticleList({
     <span className="loader"></span>
   ) : (
     <main>
-      <NavBar sort={sort} setSort={setSort} order={order} setOrder={setOrder} />
-      <FilterBy />
+      <NavBar
+        sort={sort}
+        setSort={setSort}
+        order={order}
+        setOrder={setOrder}
+        topicName={topicName}
+        setTopicName={setTopicName}
+      />
 
-      <div className="gallery">
+      <div className="card">
         <ul className="articles">
           {articleList.map((article) => {
             return (
@@ -70,13 +76,19 @@ export default function ArticleList({
               >
                 <li className="article">
                   <h2 className="title">{article.title}</h2>
-                  <h4>{article.author}</h4>
-                  <p>{article.created_at.slice(0, 10)}</p>
-                  <img src={article.article_img_url} />
+                  <h4 className="author">{article.author}</h4>
+                  <p className="date">{article.created_at.slice(0, 10)}</p>
+                  <img
+                    className="article-image"
+                    src={article.article_img_url}
+                  />
                   <h5 className="topic">{article.topic}</h5>
                   <p className="votes"> ❤️ {article.votes}</p>
 
-                  <p className="comments"> 💬 {article.comment_count}</p>
+                  <p className="article-comments-count">
+                    {" "}
+                    💬 {article.comment_count}
+                  </p>
                 </li>
               </Link>
             );
