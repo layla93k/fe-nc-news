@@ -47,14 +47,9 @@ export const getComments = (article_id) => {
 
 export const updateLikes = (votes, article_id) => {
   let path = `https://nc-news-back-end-project.onrender.com/api/articles/${article_id}`;
-  return axios
-    .patch(path, votes)
-    .then((response) => {
-      return response;
-    })
-    .catch((err) => {
-      return err;
-    });
+  return axios.patch(path, votes).then((response) => {
+    return response;
+  });
 };
 
 export const postComment = (comment, article_id) => {

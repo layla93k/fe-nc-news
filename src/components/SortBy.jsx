@@ -6,7 +6,7 @@ export default function SortBy({ sort, setSort }) {
   };
 
   return (
-    <div className="custom-select">
+    <div className="dropdown-sortby">
       <select value={sort} onChange={handleChange}>
         <option disabled={true} value="">
           Sort by..
