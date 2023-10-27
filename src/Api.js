@@ -5,15 +5,9 @@ export const getArticles = (topic) => {
   if (topic) {
     path += `?topic=${topic}`;
   }
-  return axios
-    .get(path)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((err) => {
-      console.log("returning err");
-      return err;
-    });
+  return axios.get(path).then((response) => {
+    return response.data;
+  });
 };
 
 export const getSortedArticles = (sort, orderby) => {

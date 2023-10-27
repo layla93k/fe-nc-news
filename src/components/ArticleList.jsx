@@ -6,27 +6,27 @@ import { getArticles } from "../Api";
 import { useParams } from "react-router-dom";
 import FilterBy from "./FilterBy";
 import { getSortedArticles } from "../Api";
-import SortBy from "./SortBy";
-import Orderby from "./Orderby";
 import ErrorComponent from "./ErrorComponent";
+import "../Articles.css";
 
-export default function ArticleList({ error, setError }) {
+export default function ArticleList({
+  error,
+  setError,
+  sort,
+  setSort,
+  order,
+  setOrder,
+}) {
   const [articleList, setArticleList] = useState([]);
-  const [sort, setSort] = useState("");
-  const [order, setOrder] = useState("desc");
-
+  const [isLoading, setIsLoading] = useState(true);
   const { topic } = useParams();
 
   useEffect(() => {
     getArticles(topic)
       .then((response) => {
-        if (response.code === "ERR_BAD_REQUEST") {
-          console.log("ive caught the error");
-          setError(true);
-        } else {
-          setArticleList(response.articles);
-          console.log(response, "response");
-        }
+        setError(false);
+        setIsLoading(false);
+        setArticleList(response.articles);
       })
       .catch((err) => {
         setError(true);
@@ -48,31 +48,32 @@ export default function ArticleList({ error, setError }) {
     <ErrorComponent setError={setError} />
   ) : (
     <main>
-      <NavBar />
+      <NavBar sort={sort} setSort={setSort} order={order} setOrder={setOrder} />
       <FilterBy />
-      <SortBy sort={sort} setSort={setSort} />
-      <Orderby order={order} setOrder={setOrder} />
-      <ul className="articles">
-        {articleList.map((article) => {
-          return (
-            <Link
-              key={article.article_id}
-              to={`/articles/${article.article_id}`}
-            >
-              <li className="article">
-                <h2 className="title">{article.title}</h2>
-                <h4>{article.author}</h4>
-                <p>{article.created_at.slice(0, 10)}</p>
-                <img src={article.article_img_url} />
-                <h5 className="topic">{article.topic}</h5>
-                <p className="votes"> ❤️ {article.votes}</p>
 
-                <p> Comments {article.comment_count}</p>
-              </li>
-            </Link>
-          );
-        })}
-      </ul>
+      <div className="gallery">
+        <ul className="articles">
+          {articleList.map((article) => {
+            return (
+              <Link
+                key={article.article_id}
+                to={`/articles/${article.article_id}`}
+              >
+                <li className="article">
+                  <h2 className="title">{article.title}</h2>
+                  <h4>{article.author}</h4>
+                  <p>{article.created_at.slice(0, 10)}</p>
+                  <img src={article.article_img_url} />
+                  <h5 className="topic">{article.topic}</h5>
+                  <p className="votes"> ❤️ {article.votes}</p>
+
+                  <p className="comments"> 💬 {article.comment_count}</p>
+                </li>
+              </Link>
+            );
+          })}
+        </ul>
+      </div>
     </main>
   );
 }

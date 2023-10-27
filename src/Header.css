@@ -1,0 +1,49 @@
+.header {
+  font-size: 40px;
+  flex-wrap: wrap;
+  height: 210px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-image: url("https://as1.ftcdn.net/v2/jpg/03/61/31/82/1000_F_361318210_7LN4xQI5KTZGXCQRAGLTpsqeAVpY2QFz.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: MidnightBlue;
+  opacity: 0.3;
+}
+
+h1 {
+  font-weight: bold;
+  margin-left: 100px;
+  color: rgb(252, 246, 246);
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0px #957dad, 1px 2px 0px #957dad, 1px 3px 0px #957dad,
+    1px 4px 0px #957dad, 1px 5px 0px #957dad, 1px 6px 0px #957dad,
+    1px 10px 5px rgba(16, 16, 16, 0.5), 1px 15px 10px rgba(16, 16, 16, 0.4),
+    1px 20px 30px rgba(16, 16, 16, 0.3), 1px 25px 50px rgba(16, 16, 16, 0.2);
+}
+
+/* .sample-section-wrap {
+  position: relative;
+  background-color: white;
+}
+.sample-section {
+  position: relative;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px;
+} */

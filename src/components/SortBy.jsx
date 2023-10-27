@@ -6,21 +6,18 @@ export default function SortBy({ sort, setSort }) {
   };
 
   return (
-    <form>
-      <div className="dropdown-sortby">
-        <label>
-          {" "}
+    <div className="custom-select">
+      <select value={sort} onChange={handleChange}>
+        <option disabled={true} value="">
           Sort by..
-          <div className="dropdown-content-sortby"></div>
-          <select value={sort} onChange={handleChange}>
-            <option value="created_at">Date</option>
+        </option>
 
-            <option value="comment_count">Comment count</option>
+        <option value="created_at">Date</option>
 
-            <option value="votes">Votes</option>
-          </select>
-        </label>
-      </div>
-    </form>
+        <option value="comment_count">Comment count</option>
+
+        <option value="votes">Votes</option>
+      </select>
+    </div>
   );
 }

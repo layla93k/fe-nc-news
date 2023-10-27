@@ -10,6 +10,8 @@ import { useState } from "react";
 
 function App() {
   const [error, setError] = useState(false);
+  const [sort, setSort] = useState("");
+  const [order, setOrder] = useState("desc");
   return (
     <div className="app">
       <UserIcon />
@@ -25,7 +27,19 @@ function App() {
           path="/articles/topics/:topic"
           element={<ArticleList error={error} setError={setError} />}
         />
-        <Route path="/articles" element={<ArticleList />} />
+        <Route
+          path="/articles"
+          element={
+            <ArticleList
+              order={order}
+              setOrder={setOrder}
+              sort={sort}
+              setSort={setSort}
+              error={error}
+              setError={setError}
+            />
+          }
+        />
       </Routes>
     </div>
   );
