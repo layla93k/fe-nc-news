@@ -6,8 +6,6 @@ import { getArticles } from "../Api";
 import { useParams } from "react-router-dom";
 import FilterBy from "./FilterBy";
 import { getSortedArticles } from "../Api";
-import SortBy from "./SortBy";
-import Orderby from "./Orderby";
 import ErrorComponent from "./ErrorComponent";
 import "../Articles.css";
 
@@ -20,19 +18,15 @@ export default function ArticleList({
   setOrder,
 }) {
   const [articleList, setArticleList] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(true);
   const { topic } = useParams();
 
   useEffect(() => {
     getArticles(topic)
       .then((response) => {
-        if (response.code === "ERR_BAD_REQUEST") {
-          console.log("ive caught the error");
-          setError(true);
-        } else {
-          setArticleList(response.articles);
-          console.log(response, "response");
-        }
+        setError(false);
+        setIsLoading(false);
+        setArticleList(response.articles);
       })
       .catch((err) => {
         setError(true);

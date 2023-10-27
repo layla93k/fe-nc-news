@@ -22,6 +22,7 @@ export default function ArticleShowCard() {
         setSingleArticle(response.article[0]);
       })
       .catch((err) => {
+        console.log(err);
         setErr(true);
       });
   }, []);

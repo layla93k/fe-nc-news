@@ -35,6 +35,8 @@ function App() {
               setOrder={setOrder}
               sort={sort}
               setSort={setSort}
+              error={error}
+              setError={setError}
             />
           }
         />

@@ -4,15 +4,18 @@ img {
 }
 
 .article {
+  text-align: center;
+  list-style: none;
   border-style: solid;
   flex-wrap: wrap;
   background-color: rgb(205, 204, 209);
   border-radius: 0%;
-  margin: 4px;
+  margin: 15px;
   line-height: normal;
   color: rgb(59, 59, 105);
   width: 350px;
   height: 500px;
+  box-shadow: 3px 3px;
 }
 
 .topic {
