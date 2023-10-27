@@ -4,12 +4,23 @@
   font-family: "Roboto", sans-serif;
 }
 
+.article-container {
+  display: block;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: dotted;
+  height: 600px;
+  width: 950px;
+  text-align: center;
+}
+
 .logged-in-user {
   margin-top: 100px;
   margin-left: 600px;
   flex-wrap: wrap;
   text-align: right;
-  font-size: 15px;
+  font-size: 10px;
   display: flex;
   justify-content: flex-end;
 }
@@ -28,7 +39,13 @@
 }
 
 .comment {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  flex-wrap: wrap;
   margin: 100px;
+  height: auto;
+  width: 800px;
   border-style: solid;
 }
 
@@ -38,7 +55,7 @@
 }
 
 .numVotes {
-  margin: 0px;
+  margin: auto;
   margin-left: 30px;
   font-size: 30px;
   padding-top: 35px;
@@ -52,8 +69,8 @@
 }
 
 .heart-btn {
-  height: 10px;
-  width: 10px;
+  height: 20px;
+  width: 20px;
 }
 
 .dislike-btn {
@@ -62,6 +79,7 @@
 }
 
 .comment-input {
+  margin-top: 300px;
   height: 100px;
   width: 400px;
 }
@@ -92,6 +110,9 @@
 }
 
 .comment-add-section {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 30px;
   flex-wrap: wrap;
   margin-left: 25%;
@@ -103,22 +124,16 @@
 
 /* Style The Dropdown Button */
 .dropbtn {
+  margin-top: 50px;
   background-color: #222952;
   color: white;
-  padding: 16px;
+  margin-right: 750px;
   font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
 }
 
 .dropdown-content {
   display: none;
-  position: absolute;
+
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -129,7 +144,6 @@
   color: black;
   padding: 12px 16px;
   text-decoration: none;
-  display: block;
 }
 
 .dropdown-content a:hover {
@@ -152,37 +166,18 @@
   font-size: 30px;
   padding-bottom: 0px;
 }
-.custom-select {
-  position: relative;
-  font-family: Arial;
+
+.dropdown-sortby {
+  font-size: 20px;
+  margin-left: 30px;
 }
 
-.custom-select select {
-  display: none; /*hide original SELECT element: */
+.dropdown-orderby {
+  font-size: 20px;
+  margin-left: 43%;
 }
 
-.select-selected {
-  background-color: DodgerBlue;
-}
-
-/* Style the arrow inside the select element: */
-.select-selected:after {
-  position: absolute;
-  content: "";
-  top: 14px;
-  right: 10px;
-  width: 0;
-  height: 0;
-  border: 6px solid transparent;
-  border-color: #fff transparent transparent transparent;
-}
-
-/* Point the arrow upwards when the select box is open (active): */
-.select-selected.select-arrow-active:after {
-  border-color: transparent transparent #fff transparent;
-  top: 7px;
-}
-
+/*error message */
 .errorMsg {
   margin-top: 100px;
   font-size: 30px;
@@ -212,10 +207,65 @@
 
 .login {
   flex-wrap: wrap;
-
   font-size: 20px;
   font-weight: bold;
   margin-top: 60px;
   left: 10;
   right: 50px;
+}
+
+/*loader*/
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  border: 3px solid;
+  border-color: #fff #fff transparent transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after,
+.loader::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px solid;
+  border-color: transparent transparent #4b62ac #202750;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: rotationBack 0.5s linear infinite;
+  transform-origin: center center;
+}
+.loader::before {
+  width: 32px;
+  height: 32px;
+  border-color: #fff #fff transparent transparent;
+  animation: rotation 1.5s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
 }

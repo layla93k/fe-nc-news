@@ -21,6 +21,7 @@ export default function ArticleVotes({ totalVotes, article_id }) {
   const handleLike = () => {
     updateLikes({ inc_votes: 1 }, article_id)
       .then((res) => {
+        console.log(res);
         updateUserLikes(1);
       })
       .catch((err) => {
@@ -39,31 +40,33 @@ export default function ArticleVotes({ totalVotes, article_id }) {
   };
 
   return (
-    <div className="flex-div">
-      <button
-        className="dislike-btn"
-        disabled={userDislikeInput === 1}
-        onClick={() => {
-          setClick(false);
-          handleDislike();
-        }}
-      >
-        {" "}
-        -
-      </button>
-
-      <h5 className="numVotes">{totalVotes + votes}</h5>
-
-      <button disabled={userLikeInput === 1}>
-        <Heart
-          isClick={isClick}
+    <div id="voting-fnct">
+      <div className="flex-div">
+        <button
+          className="dislike-btn"
+          disabled={userDislikeInput === 1}
           onClick={() => {
-            setClick(true);
-            handleLike();
+            setClick(false);
+            handleDislike();
           }}
-        />
-      </button>
-      {err ? <p>Votes not updated!</p> : null}
+        >
+          {" "}
+          -
+        </button>
+
+        <h5 className="numVotes">{totalVotes + votes}</h5>
+
+        <button disabled={userLikeInput === 1}>
+          <Heart
+            isClick={isClick}
+            onClick={() => {
+              setClick(true);
+              handleLike();
+            }}
+          />
+        </button>
+        {err ? <p>Votes not updated!</p> : null}
+      </div>
     </div>
   );
 }

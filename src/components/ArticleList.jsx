@@ -16,12 +16,15 @@ export default function ArticleList({
   setSort,
   order,
   setOrder,
+  isLoading,
+  setIsLoading,
 }) {
   const [articleList, setArticleList] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+
   const { topic } = useParams();
 
   useEffect(() => {
+    setIsLoading(true);
     getArticles(topic)
       .then((response) => {
         setError(false);
@@ -30,22 +33,28 @@ export default function ArticleList({
       })
       .catch((err) => {
         setError(true);
+        setIsLoading(false);
       });
   }, [topic]);
 
   useEffect(() => {
+    setIsLoading(true);
     getSortedArticles(sort, order)
       .then((response) => {
+        setIsLoading(false);
         setArticleList(response.articles);
       })
       .catch((err) => {
         console.log("in the sort catch");
         setError(true);
+        setIsLoading(false);
       });
   }, [sort, order]);
 
   return error ? (
     <ErrorComponent setError={setError} />
+  ) : isLoading ? (
+    <span className="loader"></span>
   ) : (
     <main>
       <NavBar sort={sort} setSort={setSort} order={order} setOrder={setOrder} />

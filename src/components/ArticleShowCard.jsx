@@ -8,7 +8,7 @@ import ArticleVotes from "./ArticleVotes";
 import CommentAdder from "./CommentAdder";
 import ErrorComponent from "./ErrorComponent";
 
-export default function ArticleShowCard() {
+export default function ArticleShowCard({ isLoading, setIsLoading }) {
   const { article_id } = useParams();
   const [singleArticle, setSingleArticle] = useState([]);
   const [comments, setComments] = useState([]);
@@ -16,23 +16,28 @@ export default function ArticleShowCard() {
   const [err, setErr] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     getArticleById(article_id)
       .then((response) => {
         setErr(false);
+        setIsLoading(false);
         setSingleArticle(response.article[0]);
       })
       .catch((err) => {
         console.log(err);
         setErr(true);
+        setIsLoading(false);
       });
   }, []);
 
   return err ? (
     <ErrorComponent setErr={setErr} />
+  ) : isLoading ? (
+    <p>Loading...</p>
   ) : (
     <>
       <NavBar />
-      <div className="container">
+      <div className="article-container">
         <h2>{singleArticle.title}</h2>
         <img src={singleArticle.article_img_url} />
         <h4>{singleArticle.author}</h4>
