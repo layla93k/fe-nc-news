@@ -23,7 +23,9 @@ git clone https://github.com/layla93k/fe-nc-news
 ```
 cd fe-nc-news
 ```
-
+```
+npm run dev
+```
 ## Backend Repository
 
 You can find the backend code in the following repository: https://github.com/layla93k/nc-news-backend-project
