@@ -24,6 +24,9 @@ git clone https://github.com/layla93k/fe-nc-news
 cd fe-nc-news
 ```
 ```
+npm init
+```
+```
 npm run dev
 ```
 ## Backend Repository
